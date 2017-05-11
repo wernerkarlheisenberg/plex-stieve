@@ -1,0 +1,15 @@
+[
+{
+"id": "username",
+"type": "text",
+"label": "Username",
+"default": "user@example.com"
+},
+{
+"id": "password",
+"type": "text",
+"label": "Password",
+"default": "topsecret",
+"option": "hidden"
+},
+]
