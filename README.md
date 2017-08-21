@@ -13,5 +13,8 @@ The installation does not require additional steps compared with the installatio
 6. Hover the Stievie symbol with your mouse and click the settings icon.
 7. Fill your Stievie username and password and Save.
 
+Known issues
+* People using Windows 8(.1), please have a look at [this issue](https://github.com/wernerkarlheisenberg/plex-stieve/issues/3). It turns out that the included python libraries in Plex Media Server differ between platforms.
+
 # Issues
 When have problems, please file an issue. To speed up the troubleshooting process, please add a copy of the plugin (com.plexapp.plugins.stievie.log), system (com.plexapp.system.log) and server log (Plex Media Server.log).
