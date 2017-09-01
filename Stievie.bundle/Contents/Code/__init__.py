@@ -36,7 +36,7 @@ def StreamURL(channel):
     }
 
     # ??? IS ER EEN MANIER OM DEVICE ID OOK TE BEPALEN ???
-    stream_url = 'http://stream-live.medialaan.io/stream-live/v1/channels/' + channel + '/episodes/current/video/?deviceId=9e65a68c082d91e7666ac2e3de9b258e'
+    stream_url = 'http://stream-live.medialaan.io/stream-live/v1/channels/' + channel + '/episodes/current/video/?deviceId=' + Prefs['deviceId']
     stream_url_resp = requests.get(stream_url, headers=authorization_header)
     return  stream_url_resp.json()['response']['url']['hls']
 

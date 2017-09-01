@@ -12,4 +12,10 @@
 "default": "topsecret",
 "option": "hidden"
 },
+{
+"id": "deviceId",
+"type": "text",
+"label": "Device ID",
+"default": "def480ff25ca6bbc5f0da84e5f0da84e"
+},
 ]
