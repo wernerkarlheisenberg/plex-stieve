@@ -11,7 +11,7 @@ The installation does not require additional steps compared with the installatio
 4. To be on the safe side, restart the Plex Server.
 5. Click the "Channels" menu item in Plex.
 6. Hover the Stievie symbol with your mouse and click the settings icon.
-6. Fill your Stievie username and password. Specify whether you have a Stievie Premium subscription and Save.
+7. Fill your Stievie username and password. Specify whether you have a Stievie Premium subscription and Save.
 
 Optional: The number of concurrent views using one account is limited based upon a Device ID. By default a random Device ID is used by this channel. If you know the Device ID of your browser or other viewer, you can specify it in the preferences panel.
 
