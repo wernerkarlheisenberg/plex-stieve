@@ -20,12 +20,13 @@ def MainMenu():
 
     oc = ObjectContainer()
     for channel in channels.channelList:
-        do_channel = VideoClipObject(
-            url= StreamURL(channel.url_name),
-            title = channel.name,
-            thumb = channel.logo_name
-        )
-        oc.add(do_channel)
+        if Prefs['premium'] or not channel.premium:
+            do_channel = VideoClipObject(
+                url= StreamURL(channel.url_name),
+                title = channel.name,
+                thumb = channel.logo_name
+            )
+            oc.add(do_channel)
 
     return oc
 
@@ -35,7 +36,6 @@ def StreamURL(channel):
         'Authorization' : "access_token=" + Dict['accessToken']
     }
 
-    # ??? IS ER EEN MANIER OM DEVICE ID OOK TE BEPALEN ???
     stream_url = 'http://stream-live.medialaan.io/stream-live/v1/channels/' + channel + '/episodes/current/video/?deviceId=' + Prefs['deviceId']
     stream_url_resp = requests.get(stream_url, headers=authorization_header)
     return  stream_url_resp.json()['response']['url']['hls']

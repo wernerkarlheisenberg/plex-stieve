@@ -1,26 +1,27 @@
 class Channel(object):
-    def __init__(self, name, url_name, logo_name):
+    def __init__(self, name, url_name, logo_name, premium):
         self.name = name
         self.url_name = url_name
         self.logo_name = logo_name
+        self.premium = premium
 
 logo_directory = 'http://cdnfiles.medialaan.be/images/channels/bw/'
 channelList = [
-    Channel('VTM', 'vtm', logo_directory + 'logo_vtm.png'),
-    Channel('Q2', '2be', logo_directory + 'logo_q2.png'),
-    Channel('Vitaya', 'vitaya', logo_directory + 'logo_vitaya.png'),
-    Channel('CAZ', 'caz', logo_directory + 'logo_caz.png'),
-    Channel('één', 'een', logo_directory + 'logo_een.png'),
-    Channel('canvas', 'canvas', logo_directory + 'logo_canvas.png'),
-    Channel('Vier', 'vier', logo_directory + 'logo_vier.png'),
-    Channel('Vijf', 'vijf', logo_directory + 'logo_vijf.png'),
-    Channel('Zes', 'zes', logo_directory + 'logo_zes.png'),
-    Channel('VTM KZOOM', 'kzoom', logo_directory + 'vtmkzoom.png'),
-    Channel('Kadet', 'kadet', logo_directory + 'logo_kadet.png'),
-    Channel('Ketnet', 'ketnet', logo_directory + 'logo_ketnet.png'),
-    #Channel('Discovery Channel', 'discovl', logo_directory + 'logo_discovery.png'),
-    Channel('National Geographic', 'ngc', logo_directory + 'logo_ng.png'),
-    Channel('National Geographic -  Wild', 'ngcwild', logo_directory + 'logo_ngwild.png'),
-    Channel('TLC', 'tlcvl', logo_directory + 'logo_tlc.png'),
-    Channel('Eurosport 1', 'eursbe', logo_directory + 'logo_eurosport1.png'),
+    Channel('VTM', 'vtm', logo_directory + 'logo_vtm.png', False),
+    Channel('Q2', '2be', logo_directory + 'logo_q2.png', False),
+    Channel('Vitaya', 'vitaya', logo_directory + 'logo_vitaya.png', False),
+    Channel('CAZ', 'caz', logo_directory + 'logo_caz.png', False),
+    Channel('één', 'een', logo_directory + 'logo_een.png', True),
+    Channel('canvas', 'canvas', logo_directory + 'logo_canvas.png', True),
+    Channel('Vier', 'vier', logo_directory + 'logo_vier.png', True),
+    Channel('Vijf', 'vijf', logo_directory + 'logo_vijf.png', True),
+    Channel('Zes', 'zes', logo_directory + 'logo_zes.png', True),
+    Channel('VTM KZOOM', 'kzoom', logo_directory + 'vtmkzoom.png', False),
+    Channel('Kadet', 'kadet', logo_directory + 'logo_kadet.png', False),
+    Channel('Ketnet', 'ketnet', logo_directory + 'logo_ketnet.png', True),
+    #Channel('Discovery Channel', 'discovl', logo_directory + 'logo_discovery.png', True),
+    Channel('National Geographic', 'ngc', logo_directory + 'logo_ng.png', True),
+    Channel('National Geographic -  Wild', 'ngcwild', logo_directory + 'logo_ngwild.png', True),
+    Channel('TLC', 'tlcvl', logo_directory + 'logo_tlc.png', True),
+    Channel('Eurosport 1', 'eursbe', logo_directory + 'logo_eurosport1.png', True),
     ]

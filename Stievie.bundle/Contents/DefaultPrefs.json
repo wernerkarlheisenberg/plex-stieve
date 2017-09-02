@@ -13,6 +13,12 @@
 "option": "hidden"
 },
 {
+"id": "premium",
+"type": "bool",
+"label": "Stievie Premium",
+"default": false
+},
+{
 "id": "deviceId",
 "type": "text",
 "label": "Device ID",
