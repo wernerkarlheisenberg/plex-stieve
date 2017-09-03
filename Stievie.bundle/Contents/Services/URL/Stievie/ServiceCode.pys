@@ -10,10 +10,12 @@ import inspect
 import sys
 import os
 
-file_location = inspect.getfile(inspect.currentframe())
-bundle_location = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(file_location))))
-sys.path.append(os.path.join(bundle_location, 'Libraries/Shared'))
-
+FILE_PATH = inspect.getfile(inspect.currentframe())
+BUNDLE_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(FILE_PATH))))
+MODULE_PATH = os.path.join(BUNDLE_PATH, 'Libraries', 'Shared')
+if MODULE_PATH not in sys.path:
+    sys.path.append(MODULE_PATH)
+    
 import requests
 
 ####################################################################################################
