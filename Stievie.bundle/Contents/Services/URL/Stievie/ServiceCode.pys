@@ -1,4 +1,5 @@
 import channels
+from lxml import html
 
 # We require the requests module which is not included by default in Plex.
 # Although the requests module is included in this bundle (Libraries/Shared/requests)
@@ -15,7 +16,7 @@ BUNDLE_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(FI
 MODULE_PATH = os.path.join(BUNDLE_PATH, 'Libraries', 'Shared')
 if MODULE_PATH not in sys.path:
     sys.path.append(MODULE_PATH)
-    
+
 import requests
 
 ####################################################################################################
@@ -54,5 +55,49 @@ def MediaObjectsForURL(url):
 ####################################################################################################
 @indirect
 def PlayVideo(url, **kwargs):
-    video_url = requests.get(url).content.split('\n')[3]
+    video_url = requests.get(StreamURL(url)).content.split('\n')[3]
     return IndirectResponse(VideoClipObject, key=video_url)
+
+####################################################################################################
+def StreamURL(url):
+
+    authorization_header = {
+        'Authorization' : "access_token=" + GetAccessToken()
+    }
+
+    stream_url_resp = requests.get(url, headers=authorization_header)
+    return  stream_url_resp.json()['response']['url']['hls']
+
+####################################################################################################
+def GetAccessToken():
+
+    login_data = {
+        'loginID' : Prefs['username'],
+        'password' : Prefs['password'],
+        'APIKey' : '3_OEz9nzakKMkhPdUnz41EqSRfhJg5z9JXvS4wUORkqNf2M2c1wS81ilBgCewkot97'
+    }
+
+    login_resp = requests.post('https://accounts.eu1.gigya.com/accounts.login', login_data)
+    uid=login_resp.json()['UID']
+    uidSignature=login_resp.json()['UIDSignature']
+    signatureTimestamp=login_resp.json()['signatureTimestamp']
+
+    search_page_resp = requests.get('http://watch.stievie.be')
+    search_page_resp_xml = html.fromstring(search_page_resp.content)
+    script_tag = search_page_resp_xml.xpath("//body//script")[0].text
+    config_js_url = "http://static.watch.stievie.be/config-" + script_tag.split('config-')[1].split('"')[0]
+    config_js_resp = requests.get(config_js_url)
+    apiKey = config_js_resp.content.split('medialaan:{apiKey:"')[1].split('"')[0]
+
+    token_data = {
+        'database': 'stievie-sso',
+        'uid': uid,
+        'signature': uidSignature,
+        'timestamp': signatureTimestamp
+    }
+    token_header = {
+        'Authorization' : "apikey=" + apiKey
+    }
+    token_resp = requests.get('http://user.medialaan.io/user/v1/gigya/request_token', headers=token_header, params = token_data)
+
+    return token_resp.json()['response']
