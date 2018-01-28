@@ -17,7 +17,7 @@ def MainMenu():
     for channel in channels.channelList:
         if Prefs['premium'] or not channel.premium:
             do_channel = VideoClipObject(
-                url= 'https://stream-live.medialaan.io/stream-live/v1/channels/' + channel.url_name + '/episodes/current/video/?deviceId=' + Prefs['deviceId'],
+                url= 'https://stream-live.medialaan.io/stream-live/v1/channels/' + channel.url_name + '/broadcasts/current/video/?deviceId=' + Prefs['deviceId'],
                 title = channel.name,
                 thumb = channel.logo_name
             )
